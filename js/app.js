@@ -34,7 +34,7 @@ const filterActiveRegions = (regions) => {
 
 
 const getPokemon = async id => { //Função para pegar o pokemon da API
-    const url = `http://pokeapi.co/api/v2/pokemon/${id}`  // Armazena o endereço de onde a função deve pegar as informações
+    const url = `https://pokeapi.co/api/v2/pokemon/${id}`  // Armazena o endereço de onde a função deve pegar as informações
     const res = await fetch(url) // Armazena a promesa da Api que vem como Objeto
     const pokemon = await res.json()// Retorna um objeto Json    
     baseDados.push(pokemon)
