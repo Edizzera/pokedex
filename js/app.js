@@ -43,7 +43,7 @@ const getPokemon = async id => { //Função para pegar o pokemon da API
 
 
 const loadAllPokemon = async () => {
-    for(let i=1; i<=151; i++) {
+    for(let i=1; i<=694; i++) {
       await  getPokemon(i)
     
     }
