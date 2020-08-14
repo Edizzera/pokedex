@@ -1,11 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap');
+
 
 body {
-    background: #EFEFBB;
-    background: -webkit-linear-gradient(to right, #D4D3DD, #EFEFBB);
-    font-family: 'Lato';
-    margin: 0;
-
+    height: 100hv;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    background: #00c9ff;
+    background:  -webkit-linear-gradient(to right, #92fe9d, #00c9ff);
+    background: linear-gradient(to right, #92f39d, #00c9ff);
+    font-family: sans-serif;
 }
 
 .header {
@@ -15,24 +18,30 @@ body {
 }
 
 #pokeLogo {
-    background-color: #EFEFBB;
+    background:linear-gradient(to right, #92f39d, #00c9ff);
+    background:linear-gradient(to right, #92f39d, #00c9ff);
+    
 }
 
-h1 {
-    
+h1 {    
     align-items: center;
-    letter-spacing: 3px;
-    
+    letter-spacing: 3px;    
 }
 
-.poke-container {
-    
+.poke-container {    
     float: left;
     height: 100%;
     width: 190px;
-    margin: 40px 110px 0px 110px ;
     border-radius: 13px;
     text-align: center;
+    background: #f1f1f1;
+    margin:40px 70px;
+    padding: 35px;
+    
+    text-align: center;
+    box-shadow: 1px 10px 15px -10px rgba(0, 0, 0, 0.4);
+    border: 1px solid #eaeaea;
+    position: relative;
    
 }
 
@@ -40,17 +49,19 @@ h1 {
     text-transform: capitalize;
 }
 
-
-
 img {
-    margin-top: 50px;
+    padding: 20px;
+    min-width: 171px;
+    min-height: 171px;
+    margin-top: 5px;
+	max-width: 90%;
     background-color: #D4D3DD;
     border-radius: 50px;
 }
+
 nav .search-container {
     float: right;
-  }
-
+} 
 
 .search-container {
     float: right;
@@ -59,73 +70,44 @@ nav .search-container {
     
 }
 
-.grass {
-    background-color: rgba(5, 197, 5, 0.6);
+.skeleton-container {
+    height: 330px;
 }
 
-.normal {
-    background-color:#b6b3b3;
+.skeleton-container:empty {
+    background-image: linear-gradient(#ccc,#ccc),
+    linear-gradient(#ccc,#ccc),
+    linear-gradient(#ccc,#ccc),
+    linear-gradient(#ccc,#ccc),
+    linear-gradient(#f1f1f1, #f1f1f1);
+    background-size: 171px 171px, 190px 18px, 190px 18px, 190px 28px, 100% 100%;
+    background-position: 50% 55px, 50% 237px, 50% 271px, 50% 309px, 0 0 ;
+    background-repeat: no-repeat;  
 }
 
-.water {
-    background-color: #2e99e0;
+.skeleton-container:empty:after {
+    content: "";
+    height: 6px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(to left, #92fe9d 0, #00c9ff);
+    background-size: 200% 200%;
+    animation: loadingGradient 1s infinite;
 }
 
-.poison {
-    background-color: #7500a3;
+@keyframes loadingGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: -200% 0%;
+    }
 }
 
-.bug {
-    background-color: #d12ee0;
-}
 
-.electric {
-    background-color: #eff31a;
-}
 
-.rock {
-    background-color: rgba(168, 67, 8, 0.3);
-}
 
-.fighting {
-    background-color: #fd2222;
-}
 
-.psychic {
-    background-color: #ff5898;
-}
 
-.ground {
-    background-color: #aa3213;
-}
-
-.dragon {
-    background-color: #22d1fd;
-}
-
-.fairy {
-    background-color: #e6055b;
-}
-
-.fire {
-    background-color: #F6653C;
-}
-
-.ghost {
-    background-color:#b56dd1;
-}
-
-.ice {
-    background-color: #0509dd;
-}
-
-.dark {
-    background-color: #333131;
-}
-.flying {
-    background-color:#3ceaf6;
-}
-
-.steel {
-    background-color: #7e7775;
-}

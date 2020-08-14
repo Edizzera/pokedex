@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/colorType.css">
+    <link rel="stylesheet" href="/styles/modal.css">
     <link rel="stylesheet" href="/styles/menu.css">
     <link rel="shortcut icon" href="/imgs/favicon.ico" type="image/x-icon">
     <title>Pokedex</title>
@@ -17,19 +19,28 @@
                <li><input type="checkbox" name="Regiao" id="Hoenn" onclick="regionCheckboxClicked('Hoenn')">Hoenn</li>
                <li><input type="checkbox" name="Regiao" id="Sinnoh" onclick="regionCheckboxClicked('Sinnoh')">Sinnoh</li>
                <li><input type="checkbox" name="Regiao" id="Unova" onclick="regionCheckboxClicked('Unova')">Unova</li>
-            </ul> 
+            </ul>
             <div class="search-container">
                 <form id="pokemonSearchBar" action="">
                   <input type="text" placeholder="Pokemon Search.." name="search">
-                  <button type="submit"><i class="fa fa-search"></i></button>
+                  <button type="submit">Search</button>
                 </form>
               </div>           
         </nav>
-        
+       
         <img id="pokeLogo" src="/imgs/International_Pokémon_logo.svg" alt="Logo Pokemon">        
     </div>
     
-    <div id="container"></div>  
+    <div  id="container">  
+        <div class="poke-container skeleton-container"></div>
+        <div class="poke-container skeleton-container"></div>
+        <div class="poke-container skeleton-container"></div>
+        <div class="poke-container skeleton-container"></div>
+        <div class="poke-container skeleton-container"></div>
+        <div class="poke-container skeleton-container"></div>
+       
+    </div> 
+    
 
     <script src="/js/app.js"></script>
 </body>

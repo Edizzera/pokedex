@@ -1,5 +1,6 @@
-let baseDados = []
+let baseDados = [] // Array vazio onde serão guardados os pokemon
 
+//Obj
 let activeRegions = {
     'kanto': { active: false, startIndex: 0, finalIndex: 151 },
     'Johto': { active: false, startIndex: 152, finalIndex: 251 },
@@ -37,49 +38,91 @@ const getPokemon = async id => { //Função para pegar o pokemon da API
     const url = `https://pokeapi.co/api/v2/pokemon/${id}`  // Armazena o endereço de onde a função deve pegar as informações
     const res = await fetch(url) // Armazena a promesa da Api que vem como Objeto
     const pokemon = await res.json()// Retorna um objeto Json    
-    baseDados.push(pokemon)
+    baseDados.push(pokemon)// Guarda os pokemons em um Array para serem usados depois
     
 }
 
-
+//Chama a função de carregamento x vezes
 const loadAllPokemon = async () => {
-    for(let i=1; i<=694; i++) {
+    for(let i=1; i<= 15; i++) {
       await  getPokemon(i)
     
     }
     baseDados.sort((p1,p2) => {
        return p1.id < p2.id
    })
-   
+   document.getElementById('container').innerHTML = ''
    baseDados.forEach((p) => {
        createPokemonCard(p)
+       
    })
+   let modalBtns = document.querySelectorAll(".modal-open")
+   let closeBtns = document.querySelectorAll(".modal-close")
+
+   modalBtns.forEach( btn => {
+    btn.onclick = () => {
+        let modal = btn.getAttribute("data-modal")
+        console.log(modal)
+        document.getElementById(modal).style.display = "block"
+    }
+})
+
+closeBtns.forEach(btn => {
+    btn.onclick = () => {
+        let modal =(btn.closest(".modal").style.display = "none")
+    }
+})
 }
  loadAllPokemon()
-
-
-
-
 
 //Cria e renderiza no html o card individual de cada pokemon
 const createPokemonCard = pokemon => { 
     let pokemonCard =
-    `<div class="poke-container ${pokemon.types[0].type.name} poke-card" id="poke_container">
-        <img src="${pokemon.sprites.front_default}" alt="foto ${pokemon.name}"> 
+    `<div class="poke-container ${pokemon.types[0].type.name}">
+        <img src="https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png" alt="foto ${pokemon.name}"> 
         <p>${pokemon.id}#</p>
         <p>${pokemon.types[0].type.name}</p>
         <h2>${pokemon.name}</h2>
-    </div>`
+        <button class="modal-open" data-modal="modal${pokemon.id}">Open Pokemon Info</button>
+        
+    </div>
+    
+    
+    <!-- Modals -->
+  <div class="modal " id="modal${pokemon.id}">
+    <div class="modal-content ${pokemon.types[0].type.name} ">
+      <div class="modal-header"><h1> ${pokemon.name}</h1>
+    
+      </div>
+      <div class="modal-body ">
+      <img src="https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png" alt="foto ${pokemon.name}width="42" height="30">
+        <ul>
+            <li>Weight: ${pokemon.weight}</li>
+            <li>Height: ${pokemon.height}</li>
+            <li>Speed: ${pokemon.stats[5].base_stat}</li>
+            <li>Defense: ${pokemon.stats[2].base_stat}</li>
+            <li>Attack: ${pokemon.stats[1].base_stat}</li>
+            <li>Hp: ${pokemon.stats[0].base_stat}</li>            
+        </ul>
+       
+      </div>
+      <div class="modal-footer">
+        <button class="link modal-close">Close Modal </button>
+      </div>
+    </div>
+  </div>`
+
+       
 
     document.getElementById('container').innerHTML += pokemonCard // Adiciona o novo elemento PokemonCardElement na página html
-  
+   
 }
 
  //Filtro de Pokemons
-// Falta deixar tudo em lowercase
+
  const searchPokemon = document.forms['pokemonSearchBar'].querySelector('input')
     searchPokemon.addEventListener('keyup', e => {
-    const searchedPokemon  = e.target.value
+    const searchedPokemon  = e.target.value.toLowerCase()
     const filteredPokemons = baseDados.filter( pokemon => {
         return (
             pokemon.name.includes(searchedPokemon) ||
@@ -91,3 +134,17 @@ const createPokemonCard = pokemon => {
          createPokemonCard(pokemon)
      })
  })
+
+ 
+
+
+
+
+    
+
+ 
+
+
+
+
+ 
